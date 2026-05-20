@@ -1,13 +1,4 @@
 using System;
-
-class Program
-{
-    static void Main(string[] args)
-    {
-        Console.WriteLine("Hello World! This is the Resumes Project.");
-    }
-}
-using System;
 using System.Collections.Generic;
 
 public class Job
@@ -69,4 +60,4 @@ class Program
         myResume.Display();
     }
 }
-</Project>
+
