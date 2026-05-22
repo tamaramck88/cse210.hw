@@ -1,6 +1,6 @@
 using System;
 
-public class Entry
+public class entry
 {
     public string _date;
     public string _promptText;
