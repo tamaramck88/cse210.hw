@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-public class journal
+public class Journal
 {
     public List<Entry> _entries = new List<Entry>();
 
