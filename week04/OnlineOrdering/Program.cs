@@ -32,7 +32,7 @@ class Program
             "South Africa"
         );
 
-        Customer customer2 = new Customer("Sarah Nkosi", address2);
+        Customer customer2 = new Customer("Sarah Johnson", address2);
 
         Product product3 = new Product("Keyboard", "P200", 50, 1);
         Product product4 = new Product("Monitor", "P201", 200, 2);
