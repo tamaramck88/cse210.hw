@@ -11,8 +11,31 @@ public abstract class Goal
         _points = points;
     }
 
+    public string GetName()
+    {
+        return _name;
+    }
+
+    public string GetDescription()
+    {
+        return _description;
+    }
+
+    public int GetPoints()
+    {
+        return _points;
+    }
+
     public abstract int RecordEvent();
+
     public abstract bool IsComplete();
+
     public abstract string GetStatus();
+
     public abstract string GetSaveString();
+
+    public virtual string GetDisplayString()
+    {
+        return $"{GetStatus()} {_name} ({_description})";
+    }
 }

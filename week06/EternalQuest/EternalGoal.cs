@@ -17,7 +17,7 @@ public class EternalGoal : Goal
 
     public override string GetStatus()
     {
-        return $"[∞] {_name} ({_description})";
+        return "[∞] " + _name + " (" + _description + ")";
     }
 
     public override string GetSaveString()
