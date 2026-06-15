@@ -12,11 +12,16 @@ public class GoalManager
         _goals.Add(goal);
     }
 
+    public int GetScore()
+    {
+        return _score;
+    }
+
     public void DisplayGoals()
     {
         if (_goals.Count == 0)
         {
-            Console.WriteLine("No goals available.");
+            Console.WriteLine("No goals have been created yet.");
             return;
         }
 
@@ -30,21 +35,17 @@ public class GoalManager
     {
         if (goalIndex < 0 || goalIndex >= _goals.Count)
         {
-            Console.WriteLine("Invalid goal selection.");
+            Console.WriteLine("Invalid goal number.");
             return;
         }
 
-        int points = _goals[goalIndex].RecordEvent();
+        int pointsEarned = _goals[goalIndex].RecordEvent();
 
-        _score += points;
+        _score += pointsEarned;
 
-        Console.WriteLine($"You earned {points} points!");
-        Console.WriteLine($"Total Score: {_score}");
-    }
-
-    public int GetScore()
-    {
-        return _score;
+        Console.WriteLine();
+        Console.WriteLine($"You earned {pointsEarned} points!");
+        Console.WriteLine($"Your total score is now {_score}.");
     }
 
     public void SaveGoals(string filename)
@@ -80,16 +81,47 @@ public class GoalManager
         {
             string[] parts = lines[i].Split('|');
 
-            if (parts[0] == "SimpleGoal")
+            switch (parts[0])
             {
-                _goals.Add(
-                    new SimpleGoal(
-                        parts[1],
-                        parts[2],
-                        int.Parse(parts[3]),
-                        bool.Parse(parts[4])
-                    )
-                );
+                case "SimpleGoal":
+
+                    _goals.Add(
+                        new SimpleGoal(
+                            parts[1],
+                            parts[2],
+                            int.Parse(parts[3]),
+                            bool.Parse(parts[4])
+                        )
+                    );
+
+                    break;
+
+                case "EternalGoal":
+
+                    _goals.Add(
+                        new EternalGoal(
+                            parts[1],
+                            parts[2],
+                            int.Parse(parts[3])
+                        )
+                    );
+
+                    break;
+
+                case "ChecklistGoal":
+
+                    _goals.Add(
+                        new ChecklistGoal(
+                            parts[1],
+                            parts[2],
+                            int.Parse(parts[3]),
+                            int.Parse(parts[6]), // target count
+                            int.Parse(parts[4]), // bonus
+                            int.Parse(parts[5])  // current count
+                        )
+                    );
+
+                    break;
             }
         }
 

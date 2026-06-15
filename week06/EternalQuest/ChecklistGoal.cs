@@ -17,6 +17,7 @@ public class ChecklistGoal : Goal
         _currentCount = 0;
     }
 
+    // Constructor used when loading from a file
     public ChecklistGoal(
         string name,
         string description,
